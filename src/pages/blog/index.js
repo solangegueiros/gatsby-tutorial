@@ -1,24 +1,40 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../../components/layout'
+import { SEO } from "../../components/seo"
+
+const PageTitle = "My Blog Posts"
+
+//allFile(filter: {sourceInstanceName: {eq: "blog"}}) {
+export const query = graphql`
+    query {
+      allMdx(sort: { frontmatter: { date: DESC }}) {
+        nodes {
+          frontmatter {
+            date(formatString: "MMMM D, YYYY")
+            title
+            slug
+          }
+          id
+          excerpt
+        }
+      }
+    }
+  `
 
 const BlogPage = ({ data }) => {
-  const postList = data.blogList;
-  console.log("Blog List \n", postList);
-
   return (
-    <Layout pageTitle="My Blog Posts">
-      <p>Total: {postList.totalCount}</p>
-      <br/>
+    <Layout pageTitle={PageTitle}>
       {
-        postList.nodes.map(node => (
+        data.allMdx.nodes.map((node) => (
           <article key={node.id}>
             <h2>
-              <Link to={`/blog/${node.slug}`}>
-                {node.frontmatter.title} - {node.slug}
+              <Link to={`/blog/${node.frontmatter.slug}`}>
+                {node.frontmatter.title}
               </Link>
             </h2>
             <p>Posted: {node.frontmatter.date}</p>
+            <p>{node.excerpt}</p>
           </article>
         ))
       }
@@ -26,23 +42,8 @@ const BlogPage = ({ data }) => {
   )
 }
 
-export const query = graphql`
-  query {
-    blogList: allMdx(
-      sort: {fields: frontmatter___date, order: DESC}
-      filter: {fileAbsolutePath: {regex: "/blog/"}}
-      ) {
-      totalCount
-      nodes {
-        frontmatter {
-          date(formatString: "MMMM D, YYYY")
-          title
-        }
-        id
-        slug
-      }
-    }
-  }
-`
+//export const Head = ({ data }) => <SEO pageTitle={data.site.siteMetadata.title} />
+export const Head = () => <SEO pageTitle={PageTitle} />
+
 
 export default BlogPage

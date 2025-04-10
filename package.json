@@ -2,8 +2,7 @@
   "name": "gatsby-tutorial",
   "version": "1.0.0",
   "private": true,
-  "description": "Gatsby tutorial",
-  "author": "Solange Gueiros",
+  "description": "gatsby-tutorial",
   "keywords": [
     "gatsby"
   ],
@@ -15,15 +14,14 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.22",
-    "@mdx-js/react": "^1.6.22",
-    "gatsby": "^4.5.4",
-    "gatsby-plugin-image": "^2.5.2",
-    "gatsby-plugin-mdx": "^3.5.2",
-    "gatsby-plugin-sharp": "^4.5.2",
-    "gatsby-source-filesystem": "^4.5.2",
-    "gatsby-transformer-sharp": "^4.5.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "@mdx-js/react": "^2.3.0",
+    "gatsby": "^5.14.1",
+    "gatsby-plugin-image": "^3.14.0",
+    "gatsby-plugin-mdx": "^5.14.1",
+    "gatsby-plugin-sharp": "^5.14.0",
+    "gatsby-source-filesystem": "^5.14.0",
+    "gatsby-transformer-sharp": "^5.14.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

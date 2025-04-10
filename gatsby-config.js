@@ -1,26 +1,25 @@
+/**
+ * @type {import('gatsby').GatsbyConfig}
+ */
 module.exports = {
-    siteMetadata: {
-        title: "Gatsby test",
-        siteUrl: `https://www.yourdomain.tld`,
+  siteMetadata: {
+    title: "My First Gatsby Site",
+    description: `Example project for the Gatsby Head API`,
+    twitterUsername: `@gatsbyjs`,
+    image: `/gatsby-icon.png`,
+    siteUrl: `https://www.yourdomain.tld`,    
+  },
+  plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `blog`,
+        path: `${__dirname}/blog`,
+      }
     },
-    plugins: [
-        "gatsby-plugin-image",
-        "gatsby-plugin-sharp",
-        {
-            resolve: "gatsby-source-filesystem",
-            options: {
-              name: `blog`,
-              path: `${__dirname}/content/blog`,
-            }
-        },
-        {
-            resolve: "gatsby-source-filesystem",
-            options: {
-              name: `blog`,
-              path: `${__dirname}/content/event`,
-            }
-        },        
-        "gatsby-plugin-mdx",                
-        "gatsby-transformer-sharp",
-    ]
+    "gatsby-plugin-mdx",
+    "gatsby-transformer-sharp",
+  ],
 }
