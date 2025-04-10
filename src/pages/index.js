@@ -1,10 +1,10 @@
 import * as React from 'react'
 import Layout from '../components/layout'
-import { SEO } from "../components/seo"
+import { SEO } from "../components/seo"   //Import a "Named export"
 import { StaticImage } from 'gatsby-plugin-image'
 
 const PageTitle = "Home Page"
-console.log("PageTitle: ", PageTitle);
+// console.log("PageTitle: ", PageTitle);
 
 const IndexPage = () => {
   return (
