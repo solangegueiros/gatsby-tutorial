@@ -14,7 +14,7 @@ export const useSiteMetadata = () => {
       }
     }
   `)
-  console.log("Layout \n", data);
+  //console.log("siteMetadata \n", data.siteMetadata);
 
   return data.site.siteMetadata
 }

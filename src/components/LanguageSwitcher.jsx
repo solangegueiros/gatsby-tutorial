@@ -1,5 +1,6 @@
 // src/components/LanguageSwitcher.js
 import React from 'react'
+import { graphql } from 'gatsby'
 import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next'
 import '../styles/sidebar.scss'
 
@@ -26,3 +27,18 @@ const LanguageSwitcher = () => {
 }
 
 export default LanguageSwitcher
+
+// This is mandatory for every page using useTranslation() or anything from gatsby-plugin-react-i18next.
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

@@ -1,14 +1,27 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 import Layout from '../../components/layout'
 import { SEO } from "../../components/seo"
 
-const PageTitle = "My Blog Posts"
+const PageTitle = "Blog"
 
 //allFile(filter: {sourceInstanceName: {eq: "blog"}}) {
 export const query = graphql`
-    query {
-      allMdx(sort: { frontmatter: { date: DESC }}) {
+  query($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    allMdx(
+      sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { language: { eq: $language } } }
+    ) {
         nodes {
           frontmatter {
             date(formatString: "MMMM D, YYYY")
