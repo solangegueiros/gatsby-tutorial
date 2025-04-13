@@ -2,7 +2,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next'
-import '../styles/sidebar.scss'
+//import '../styles/sidebar.scss'
 
 const LanguageSwitcher = () => {
   const { languages, changeLanguage, language } = useI18next()

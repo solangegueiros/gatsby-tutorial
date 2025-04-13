@@ -1,9 +1,40 @@
-/* src/styles/sidebar.scss */
-.layout {
+
+
+
+.container {
   display: flex;
   min-height: 100vh;
+  margin: auto;
+  max-width: 800px;
+  font-family: sans-serif;
+
+  .heading {
+    color: rebeccapurple;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+
+    .nav-link-item {
+      padding-right: 2rem;
+
+      .nav-link-text {
+        color: black;
+      }
+    }
+  }
+
+  .site-title {
+    font-size: 3rem;
+    color: gray;
+    font-weight: 700;
+    margin: 3rem 0;
+  }
 }
 
+/* src/styles/sidebar.scss */
 .sidebar {
   width: 250px;
   background-color: #f7f7f7;

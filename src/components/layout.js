@@ -1,17 +1,15 @@
 import * as React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { useState } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 import LanguageSwitcher from './LanguageSwitcher'
-import {
-  container,
-  heading,
-  navLinks,
-  navLinkItem,
-  navLinkText,
-  siteTitle,
-} from './layout.module.css'
+import Menu from './Menu'
+import Sidebar from './Sidebar'
+
 
 const Layout = ({ pageTitle, children }) => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false)
 
+/*    
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -23,33 +21,18 @@ const Layout = ({ pageTitle, children }) => {
   `)
   //console.log("Layout data \n", JSON.stringify(data, null, 2));
 
+  //      <header className="site-title">{data.site.siteMetadata.title}</header>      
+*/
+
   return (
-    <div className={container}>
-      <header className={siteTitle}>{data.site.siteMetadata.title}</header>      
-      <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/blog" className={navLinkText}>
-              Blog
-            </Link>
-          </li>          
-          <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
-              About
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <LanguageSwitcher />
-      <main>
-        <h1 className={heading}>{pageTitle}</h1>
-        {children}
-      </main>
+    <div className="layout">
+      <Menu />
+      <div className="layout-body">
+        <Sidebar className={isSidebarOpen ? 'open' : ''} />
+        <main className="main-content">
+          {children}
+        </main>
+      </div>
     </div>
   )
 }
